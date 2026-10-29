@@ -1,0 +1,166 @@
+TYPESCRIPT SETUP IN VS CODE (WINDOWS)
+=====================================
+
+Purpose
+-------
+This guide sets up TypeScript in VS Code on Windows using Node.js, npm,
+the TypeScript compiler (tsc), and tsx.
+
+Recommended approach:
+- Use npx tsc to compile TypeScript.
+- Use npx tsx to run TypeScript directly.
+- Install tools locally in your project instead of globally.
+
+--------------------------------------------------
+1. INSTALL NODE.JS
+--------------------------------------------------
+
+1. Visit https://nodejs.org/
+2. Download and install a supported LTS version of Node.js.
+3. Restart VS Code after installation if it was already open.
+4. Open VS Code -> Terminal -> New Terminal.
+5. Run these commands separately:
+
+   node -v
+   npm -v
+
+Both commands should print version numbers. If either command is not
+recognized, install or repair Node.js, then restart VS Code.
+
+--------------------------------------------------
+2. OPEN OR CREATE YOUR PROJECT FOLDER
+--------------------------------------------------
+
+1. In VS Code, select File -> Open Folder.
+2. Open your TypeScript project folder.
+
+Example project folder:
+D:\Year 2026\Automation\Playwright-Udemy-Course\TypeScript-Learning
+
+3. In the VS Code terminal, check the current folder:
+
+   Get-Location
+
+Make sure the terminal is in the project root (the folder where
+package.json should live).
+
+--------------------------------------------------
+3. INITIALIZE THE PROJECT
+--------------------------------------------------
+
+If your project already has a package.json file, do not run npm init
+again unless you intentionally want to recreate the project setup.
+
+If package.json does not exist, run:
+
+   npm init -y
+
+This creates package.json, which records project details and packages.
+
+--------------------------------------------------
+4. INSTALL TYPESCRIPT AND TSX
+--------------------------------------------------
+
+From the project root, run:
+
+   npm install --save-dev typescript tsx
+
+This installs both tools locally in the project's node_modules folder
+and records them as development dependencies in package.json.
+
+Verify TypeScript:
+
+   npx tsc --version
+
+Verify tsx:
+
+   npx tsx --version
+
+Check whether tsx is installed in the project:
+
+   npm ls tsx
+
+IMPORTANT:
+- A local installation is normally run using npx.
+- "tsx file.ts" may not work as a standalone PowerShell command because
+  the local executable is not necessarily on the system PATH.
+- Use "npx tsx file.ts" from the project root.
+
+--------------------------------------------------
+5. CREATE A TYPESCRIPT FILE
+--------------------------------------------------
+
+In VS Code Explorer, create a folder named:
+
+   Day-01-Run-the-first-code
+
+Inside it, create:
+
+   Second.ts
+
+Add this code:
+
+   let message: string = "TypeScript is working!";
+   let learner: string = "Mahir";
+
+   console.log(message);
+   console.log("I am " + learner + ".");
+   console.log("This is my first TypeScript project.");
+
+Save the file.
+
+Your project can look like this:
+
+TypeScript-Learning/
+|-- package.json
+|-- package-lock.json
+|-- node_modules/
+|-- Day-01-Run-the-first-code/
+|   |-- Second.ts
+|-- tsconfig.json        (created in a later step)
+
+--------------------------------------------------
+6. RUN TYPESCRIPT DIRECTLY WITH TSX
+--------------------------------------------------
+
+From the project root, run:
+
+   npx tsx ".\Day-01-Run-the-first-code\Second.ts"
+
+Expected output:
+
+   TypeScript is working!
+   I am Mahir.
+   This is my first TypeScript project.
+
+tsx executes TypeScript without you manually creating a JavaScript
+file first. It is convenient for practice and development.
+
+If PowerShell says "tsx is not recognized", try the npx command above.
+If npx cannot find tsx, check that you are in the project root and run:
+
+   npm install --save-dev tsx typescript
+
+Then retry the npx command.
+
+--------------------------------------------------
+7. COMPILE TYPESCRIPT WITH TSC
+--------------------------------------------------
+
+To compile a single TypeScript file into JavaScript, run:
+
+   npx tsc ".\Day-01-Run-the-first-code\Second.ts"
+
+This creates Second.js in the same folder, if compilation succeeds.
+
+Run the generated JavaScript:
+
+   node ".\Day-01-Run-the-first-code\Second.js"
+
+This demonstrates the traditional workflow:
+TypeScript (.ts) -> TypeScript compiler (tsc) -> JavaScript (.js) -> Node.js
+
+Note: If you pass a file directly to tsc, TypeScript may use default
+compiler settings rather than all settings from tsconfig.json. For a
+project-wide build, use the configuration described below.
+

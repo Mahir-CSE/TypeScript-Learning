@@ -1,0 +1,35 @@
+var 
+    1. Scope – Function-scoped (limited to the function where it is declared). 
+    2. Can be redeclared and reinitialized within the same scope. 
+    3. Assigning a value at the time of declaration is optional. 
+let 
+    1. Scope – Block-scoped (limited to the enclosing {...} block). 
+    2. Cannot be redeclared within the same scope but can be reinitialized. 
+    3. Assigning a value at the time of declaration is optional. 
+const 
+    1. Scope – Block-scoped (limited to the enclosing {...} block). 
+    2. Cannot be redeclared or reinitialized within the same scope. 
+    3. Assigning a value at the time of declaration is mandatory.
+
+Best Practices:
+✔ Avoid var – It can cause unexpected bugs due to function scope. 
+✔ Use let – When a variable needs to change later. 
+✔ Use const – For values that should never change (constants). 
+
+
+
+Comments 
+
+Single-line comment 
+• Shortcut (Windows/Linux): Ctrl + / 
+• Shortcut (Mac): Cmd + / 
+
+// This is a single-line comment 
+
+Multi-line (Block) comment 
+• Shortcut (Windows/Linux): Shift + Alt + A 
+• Shortcut (Mac): Shift + Option + A 
+/* 
+ This is a multi-line comment 
+ Spanning multiple lines 
+*/
