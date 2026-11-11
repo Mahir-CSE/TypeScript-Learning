@@ -70,8 +70,8 @@ console.log(grade)
 //• var: Hoisted but initialized as undefined.
 //• let & const: Hoisted but not initialized (cannot be used before declaration).
 
-console.log(a1); // result: undefined (var is hoisted)
-var a1 = 10;
+// console.log(a1); // result: undefined (var is hoisted)
+// var a1 = 10;
 // console.log(b1); // Error (Cannot access before initialization)
 // let b1 = 20;
 // console.log(c1); // Error (Cannot access before initialization)
